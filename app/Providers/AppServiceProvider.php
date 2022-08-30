@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -30,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         // Paginator::useTailwind();
 
-        Schema::defaultStringLength(191);
+        Schema::defaultStringLength(191); // force schema to have longer string
+
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
