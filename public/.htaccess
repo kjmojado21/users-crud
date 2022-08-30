@@ -3,10 +3,7 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    # RewriteEngine On
-    RewriteEngine on
-    RewriteCond %{REQUEST_URI} !^public
-    RewriteRule ^(.*)$ public/$1 [L]
+    RewriteEngine On
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
@@ -22,5 +19,4 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
-
 
